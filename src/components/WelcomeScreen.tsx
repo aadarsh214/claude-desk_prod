@@ -2,7 +2,11 @@ import { Sparkles, Globe } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 
-export const WelcomeScreen = () => {
+interface WelcomeScreenProps {
+  onSelectSuggestion?: (text: string) => void;
+}
+
+export const WelcomeScreen = ({ onSelectSuggestion }: WelcomeScreenProps) => {
   const suggestions = [{
     title: "Smart Budget",
     description: "A budget that fits your lifestyle, not the other way around"
@@ -27,8 +31,18 @@ export const WelcomeScreen = () => {
       <div className="grid w-full max-w-4xl grid-cols-1 gap-4 md:grid-cols-3">
         {suggestions.map((suggestion, idx) => (
           <Card 
-            key={idx} 
-            className="cursor-pointer glass-card glass-hover border-border/50 group"
+            key={idx}
+            role="button"
+            tabIndex={0}
+            aria-label={`Start with ${suggestion.title}`}
+            onClick={() => onSelectSuggestion?.(suggestion.title)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                onSelectSuggestion?.(suggestion.title);
+              }
+            }}
+            className="cursor-pointer glass-card glass-hover border-border/50 group outline-none focus:ring-2 focus:ring-primary/40 focus:ring-offset-2 focus:ring-offset-background"
             style={{ animationDelay: `${idx * 0.1}s` }}
           >
             <CardContent className="p-5">

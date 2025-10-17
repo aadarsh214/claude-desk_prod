@@ -198,7 +198,7 @@ export const ChatArea = ({ conversationId, onConversationCreated }: ChatAreaProp
     return (
       <main className="flex flex-1 flex-col overflow-hidden">
         <div className="flex-1 overflow-y-auto">
-          <WelcomeScreen />
+          <WelcomeScreen onSelectSuggestion={handleSend} />
         </div>
         <MessageInput onSend={handleSend} disabled={streaming} />
       </main>

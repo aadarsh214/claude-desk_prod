@@ -10,6 +10,7 @@ import {
 import { useAuth } from "@/hooks/useAuth";
 import { useState } from "react";
 import { SettingsModal } from "./SettingsModal";
+import { Logo } from "./Logo";
 
 interface HeaderProps {
   onToggleSidebar: () => void;
@@ -32,7 +33,7 @@ export const Header = ({ onToggleSidebar }: HeaderProps) => {
             <Menu className="h-5 w-5" />
           </Button>
 
-          <h1 className="text-xl font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Axora AI</h1>
+          <Logo className="h-7 w-7" />
         </div>
 
         <DropdownMenu>
