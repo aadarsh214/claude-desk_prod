@@ -98,21 +98,21 @@ export const ConversationList = ({ selectedId, onSelect }: ConversationListProps
         <div
           key={conv.id}
           onClick={() => onSelect(conv.id)}
-          className={`group flex items-center gap-2 rounded-lg px-3 py-2 cursor-pointer transition-colors ${
+          className={`group flex items-center gap-3 rounded-xl px-3 py-2.5 cursor-pointer transition-all duration-200 ${
             selectedId === conv.id
-              ? 'bg-accent text-accent-foreground'
-              : 'hover:bg-accent/50'
+              ? 'glass-card bg-primary/5 text-primary shadow-sm'
+              : 'hover:glass-card hover:bg-secondary/40'
           }`}
         >
           <MessageSquare className="h-4 w-4 flex-shrink-0" />
-          <span className="flex-1 truncate text-sm">{conv.title}</span>
+          <span className="flex-1 truncate text-sm font-medium">{conv.title}</span>
           <Button
             size="sm"
             variant="ghost"
-            className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100"
+            className="h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all hover:bg-destructive/10 hover:text-destructive rounded-lg"
             onClick={(e) => handleDelete(conv.id, e)}
           >
-            <Trash2 className="h-3 w-3" />
+            <Trash2 className="h-3.5 w-3.5" />
           </Button>
         </div>
       ))}

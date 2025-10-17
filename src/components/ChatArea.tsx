@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { WelcomeScreen } from "./WelcomeScreen";
 import { MessageInput } from "./MessageInput";
 import { Message } from "./Message";
+import { TypingIndicator } from "./TypingIndicator";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
@@ -205,19 +206,24 @@ export const ChatArea = ({ conversationId, onConversationCreated }: ChatAreaProp
   }
 
   return (
-    <main className="flex flex-1 flex-col overflow-hidden">
-      <div className="flex-1 overflow-y-auto">
+    <main className="flex flex-1 flex-col overflow-hidden bg-gradient-to-b from-background to-muted/20">
+      <div className="flex-1 overflow-y-auto custom-scrollbar">
         {loading ? (
           <div className="flex h-full items-center justify-center">
-            <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+            <div className="animate-pulse-soft">
+              <Loader2 className="h-8 w-8 animate-spin text-primary" />
+            </div>
           </div>
         ) : (
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-4xl py-6">
             {messages.map((msg) => (
               <Message key={msg.id} role={msg.role} content={msg.content} />
             ))}
             {streaming && streamingContent && (
               <Message role="assistant" content={streamingContent} />
+            )}
+            {streaming && !streamingContent && (
+              <TypingIndicator />
             )}
             <div ref={messagesEndRef} />
           </div>

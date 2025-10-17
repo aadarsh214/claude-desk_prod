@@ -19,8 +19,8 @@ export const MessageInput = (props: MessageInputProps) => {
   };
 
   return (
-    <div className="border-t border-border bg-background p-4">
-      <form onSubmit={handleSubmit} className="mx-auto max-w-3xl relative flex items-end gap-2 rounded-2xl border border-border bg-background p-3">
+    <div className="border-t border-border/50 bg-background/80 backdrop-blur-lg p-4">
+      <form onSubmit={handleSubmit} className="mx-auto max-w-3xl relative flex items-end gap-2 rounded-2xl glass-card p-3 shadow-lg transition-all duration-300 focus-within:shadow-xl focus-within:ring-2 focus-within:ring-primary/20">
         <Textarea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
@@ -31,7 +31,7 @@ export const MessageInput = (props: MessageInputProps) => {
             }
           }}
           placeholder="Message Axora AI..."
-          className="min-h-[24px] max-h-[200px] resize-none border-0 bg-transparent px-0 py-0 focus-visible:ring-0"
+          className="min-h-[24px] max-h-[200px] resize-none border-0 bg-transparent px-0 py-0 focus-visible:ring-0 placeholder:text-muted-foreground/70"
           rows={1}
           disabled={props.disabled}
         />
@@ -39,7 +39,7 @@ export const MessageInput = (props: MessageInputProps) => {
         <Button
           type="submit"
           size="icon"
-          className="h-8 w-8 flex-shrink-0"
+          className="h-9 w-9 flex-shrink-0 rounded-xl bg-gradient-to-br from-primary to-accent hover:shadow-lg hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:scale-100"
           disabled={!message.trim() || props.disabled}
         >
           <svg

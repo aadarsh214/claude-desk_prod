@@ -12,8 +12,8 @@ export const Layout = () => {
   };
 
   return (
-    <div className="flex h-screen w-full overflow-hidden bg-background">
-      <Sidebar 
+    <div className="flex h-screen w-full overflow-hidden bg-gradient-to-br from-background via-background to-muted/30">
+      <Sidebar
         isOpen={sidebarOpen} 
         onToggle={() => setSidebarOpen(!sidebarOpen)}
         selectedConversation={selectedConversation}
