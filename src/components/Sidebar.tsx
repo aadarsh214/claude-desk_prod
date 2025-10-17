@@ -19,9 +19,22 @@ export const Sidebar = ({
   onSelectConversation, 
   onNewChat 
 }: SidebarProps) => {
+  const handleSelect = (id: string) => {
+    onSelectConversation(id);
+    if (window.innerWidth < 768) {
+      onToggle();
+    }
+  };
+
+  const handleNewChat = () => {
+    onNewChat();
+    if (window.innerWidth < 768) {
+      onToggle();
+    }
+  };
   return (
     <aside
-      className={`flex flex-col glass-sidebar transition-all duration-300 ${
+      className={`flex flex-col glass-sidebar backdrop-blur-xl bg-background/70 border-r border-border/50 transition-all duration-300 z-40 ${
         isOpen ? 'w-64' : 'w-0 overflow-hidden'
       }`}
     >
@@ -29,7 +42,7 @@ export const Sidebar = ({
         <>
           <div className="flex flex-col gap-2 p-4 border-b border-border/50">
             <Button 
-              onClick={onNewChat} 
+              onClick={handleNewChat} 
               className="w-full gap-2 bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
             >
               <Plus className="h-4 w-4" />
@@ -49,7 +62,7 @@ export const Sidebar = ({
             <div className="py-2 px-2">
               <ConversationList
                 selectedId={selectedConversation}
-                onSelect={onSelectConversation}
+                onSelect={handleSelect}
               />
             </div>
           </ScrollArea>

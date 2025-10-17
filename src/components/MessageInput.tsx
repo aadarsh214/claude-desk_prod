@@ -24,11 +24,11 @@ export const MessageInput = (props: MessageInputProps) => {
   };
 
   return (
-    <div className="bg-background/80 backdrop-blur-lg p-2.5 sm:p-3 border-t border-border/50 pb-[max(env(safe-area-inset-bottom),0.5rem)]">
+    <div className="bg-background/80 backdrop-blur-lg p-3 sm:p-4 border-t border-border/50 pb-[max(env(safe-area-inset-bottom),0.75rem)]">
       <form onSubmit={handleSubmit} className="mx-auto max-w-3xl">
         <div 
           onClick={handleContainerClick}
-          className="relative flex items-end gap-2 rounded-2xl glass-card p-3 sm:p-4 shadow-lg transition-all duration-300 focus-within:shadow-xl focus-within:ring-2 focus-within:ring-primary/20 cursor-text min-h-[48px] sm:min-h-[56px]"
+          className="relative flex items-end gap-2 rounded-2xl glass-card p-3.5 sm:p-4 shadow-lg transition-all duration-300 focus-within:shadow-xl focus-within:ring-2 focus-within:ring-primary/20 cursor-text min-h-[56px] sm:min-h-[60px]"
         >
           <Textarea
             ref={textareaRef}
@@ -41,7 +41,7 @@ export const MessageInput = (props: MessageInputProps) => {
               }
             }}
             placeholder="Message Axora AI..."
-            className="min-h-[24px] max-h-[200px] resize-none border-0 bg-transparent px-0 py-0 focus-visible:ring-0 placeholder:text-muted-foreground/70 text-sm sm:text-base"
+            className="min-h-[24px] max-h-[200px] resize-none border-0 bg-transparent px-0 py-0 focus-visible:ring-0 placeholder:text-muted-foreground/70 text-base sm:text-[17px]"
             rows={1}
             disabled={props.disabled}
           />
@@ -49,7 +49,7 @@ export const MessageInput = (props: MessageInputProps) => {
           <Button
             type="submit"
             size="icon"
-            className="h-9 w-9 flex-shrink-0 rounded-xl bg-gradient-to-br from-primary to-accent hover:shadow-lg hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:scale-100"
+            className="h-10 w-10 flex-shrink-0 rounded-xl bg-gradient-to-br from-primary to-accent hover:shadow-lg hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:scale-100"
             disabled={!message.trim() || props.disabled}
           >
             <svg

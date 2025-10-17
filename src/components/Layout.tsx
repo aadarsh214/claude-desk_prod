@@ -29,7 +29,7 @@ export const Layout = () => {
     <>
       {showTutorial && <Tutorial onClose={handleCloseTutorial} />}
       
-      <div className="flex h-screen w-full overflow-hidden bg-gradient-to-br from-background via-background to-muted/30">
+      <div className="flex h-screen w-full overflow-hidden bg-gradient-to-b from-background to-muted/20">
         <Sidebar
           isOpen={sidebarOpen} 
           onToggle={() => setSidebarOpen(!sidebarOpen)}
@@ -37,6 +37,14 @@ export const Layout = () => {
           onSelectConversation={setSelectedConversation}
           onNewChat={handleNewChat}
         />
+        {/* Mobile overlay to close sidebar on outside click */}
+        {sidebarOpen && (
+          <div
+            className="fixed inset-0 z-30 bg-background/40 backdrop-blur-sm md:hidden"
+            aria-hidden="true"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
         
         <div className="flex flex-1 flex-col min-w-0">
           <Header onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />

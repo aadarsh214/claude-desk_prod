@@ -28,7 +28,7 @@ export const WelcomeScreen = ({ onSelectSuggestion }: WelcomeScreenProps) => {
         </p>
       </div>
 
-      <div className="grid w-full max-w-4xl grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="hidden sm:grid w-full max-w-4xl grid-cols-1 gap-3 sm:gap-4 md:grid-cols-3">
         {suggestions.map((suggestion, idx) => (
           <Card 
             key={idx}
