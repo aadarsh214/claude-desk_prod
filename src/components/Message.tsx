@@ -22,15 +22,15 @@ export const Message = ({ role, content }: MessageProps) => {
 
   return (
     <div
-      className="flex gap-4 px-4 py-6 animate-slide-up-fade"
+      className="flex gap-3 px-3 py-3 sm:gap-4 sm:px-4 sm:py-4 animate-slide-up-fade"
     >
       <div className="flex-shrink-0">
         {role === 'user' ? (
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent shadow-md">
+          <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent shadow-md">
             <User className="h-5 w-5 text-primary-foreground" />
           </div>
         ) : (
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-secondary to-muted shadow-sm">
+          <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-gradient-to-br from-secondary to-muted shadow-sm">
             <Bot className="h-5 w-5 text-secondary-foreground" />
           </div>
         )}
@@ -38,11 +38,11 @@ export const Message = ({ role, content }: MessageProps) => {
 
       <div className="flex-1 overflow-hidden">
         {role === 'user' ? (
-          <div className="inline-block glass-card px-4 py-3 rounded-2xl max-w-[85%]">
-            <p className="text-foreground whitespace-pre-wrap">{content}</p>
+          <div className="inline-block glass-card px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-2xl max-w-[85%]">
+            <p className="text-foreground whitespace-pre-wrap text-[15px] sm:text-base">{content}</p>
           </div>
         ) : (
-          <div className="prose prose-sm dark:prose-invert max-w-none">
+          <div className="prose prose-sm dark:prose-invert max-w-none prose-p:my-2">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
